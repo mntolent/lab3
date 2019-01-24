@@ -10,10 +10,12 @@ $(document).ready(function() {
  */
 function initializePage() {
 	$("#testjs").click(function(e) {
-		$('.jumbotron h1').text("Javascript has taken control");
+		e.preventDefault();
 		
+		$('.jumbotron h1').text("Javascript has taken control");
+		$("p").toggleClass("active");
 		$("#testjs").text("Please wait...");
-		$("#testjs").toggleClass("active");
+		
 	});
 
 	// Add any additional listeners here
@@ -21,9 +23,9 @@ function initializePage() {
 	$(".project").click(projectClick);
 }
 
-function projectClick() {
-	
-		console.log("I am clicked.");
+function projectClick(e) {
+		e.preventDefault();
+		
 		var containingProject = $(this).closest(".project");
 		var description = $(containingProject).find(".project-description");
 		if (description.length == 0) {
